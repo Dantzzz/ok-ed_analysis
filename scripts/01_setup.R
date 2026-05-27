@@ -6,17 +6,17 @@
 
 # --- Packages ---
 library(dplyr); library(here); library(ggplot2); library(readr)
-library(stringr)
+library(stringr); library(tidyr)
 
 # --- File Paths ---
 RAW_DATA <- here("data", "raw")
 TRANSFORMED <- here("data", "transformed")
 
-# --- RAW DATA ---
+# --- Load Raw Data ---
 seda_raw <- read_csv(here("data", "raw", "seda_admindist_annual_cs_2025.1.csv")) %>%
   filter(fips == 40 & year > 2013 & subcat == "all")     # Filter relevant data on load
 
-nces <- read_csv(
+nces_raw <- read_csv(
   here("data", "raw", "ELSI_csv_export_6391540499159388704263.csv"),
   skip = 6,
   n_max = 626)

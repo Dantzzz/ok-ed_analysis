@@ -1,5 +1,6 @@
 # Directories
 data/
+ext-docs/
 renv/library/
 
 # Rproj files
