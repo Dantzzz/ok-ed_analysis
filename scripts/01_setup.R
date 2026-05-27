@@ -13,10 +13,10 @@ RAW_DATA <- here("data", "raw")
 TRANSFORMED <- here("data", "transformed")
 
 # --- Load Raw Data ---
-seda_raw <- read_csv(here("data", "raw", "seda_admindist_annual_cs_2025.1.csv")) %>%
+seda_raw <- read_csv(file.path(RAW_DATA, "seda_admindist_annual_cs_2025.1.csv")) %>%
   filter(fips == 40 & year > 2013 & subcat == "all")     # Filter relevant data on load
 
 nces_raw <- read_csv(
-  here("data", "raw", "ELSI_csv_export_6391540499159388704263.csv"),
+  here(RAW_DATA, "ELSI_csv_export_6391540499159388704263.csv"),
   skip = 6,
   n_max = 626)
