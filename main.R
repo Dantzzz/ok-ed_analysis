@@ -10,10 +10,11 @@
 source("scripts/01_setup.R")
 
 # --- 2. Examine Data
+source("scripts/02_explore.R")
 
 # --- 3. Clean Data (NCES & SEDA)
 ### Output: Transformed Datasets
 source("scripts/03a_nces-clean.R")
-# source("scripts/03b_seda-clean.R")
+source("scripts/03b_seda-clean.R")
 
-# --- 4. Consolidate Dataset
+# --- 4. Merge Datasets

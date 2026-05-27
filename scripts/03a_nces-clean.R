@@ -10,10 +10,11 @@ nces_proc <- nces_raw %>%
   select(1, 26, 15:25, 4:14) %>%
   # modify column names
   # rename_with(., .fn, .cols) 
-  rename_with(~paste0("locale_", str_sub(.x, -7, -1)), starts_with("Locale")) %>% 
-  rename_with(~paste0("enrollment_", str_sub(.x, -7, -1)), starts_with("Total")) %>% 
+  rename_with(~paste0("locale_20", str_sub(.x, -2, -1)), starts_with("Locale")) %>% 
+  rename_with(~paste0("enrollment_20", str_sub(.x, -2, -1)), starts_with("Total")) %>% 
   rename(fips_full = starts_with("Agency ID")) %>% 
-  rename(district_name = "Agency Name")
+  rename(district_name = "Agency Name") %>% 
+  mutate(district_name = str_to_title(district_name))
 
 # --- Pivot & Sub NULL Values ---
 nces_long <- nces_proc %>% 
@@ -51,4 +52,7 @@ nces_transform <- nces_long %>%
 # --- Export Dataset/Clean Up Env ---
 write_csv(nces_transform, file.path(TRANSFORMED, "nces_transform.csv"))
 saveRDS(nces_transform, file.path(TRANSFORMED, "nces_transform.rds"))
-rm(locale_long, nces_long, nces_proc, nces_raw)
+rm(locale_long, nces_long, nces_proc, nces_raw, nces_transform)
+
+# TODO: 
+# - remove nces_transform; reload rds after seda transformation
