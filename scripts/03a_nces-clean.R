@@ -1,7 +1,7 @@
 ####################################
 # Title: Clean Data (NCES)
 # Author: Dantz Farrow
-# Last Modified: 05/27/2026
+# Last Modified: 05/28/2026
 ####################################
 
 # --- Pre-processing ---
@@ -47,12 +47,10 @@ nces_transform <- nces_long %>%
   # drop locale wide cols
   select(district_name, fips_full, year, enrollment) %>% 
   # rejoin locale_long
-  left_join(locale_long, by = c("fips_full", "year"))
+  left_join(locale_long, by = c("fips_full", "year")) %>% 
+  mutate(year = as.numeric(year))
 
 # --- Export Dataset/Clean Up Env ---
-write_csv(nces_transform, file.path(TRANSFORMED, "nces_transform.csv"))
-saveRDS(nces_transform, file.path(TRANSFORMED, "nces_transform.rds"))
+write_csv(nces_transform, file.path(TRANSFORM, "nces_transform.csv"))
+saveRDS(nces_transform, file.path(TRANSFORM, "nces_transform.rds"))
 rm(locale_long, nces_long, nces_proc, nces_raw, nces_transform)
-
-# TODO: 
-# - remove nces_transform; reload rds after seda transformation

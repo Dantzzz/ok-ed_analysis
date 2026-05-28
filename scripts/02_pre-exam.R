@@ -1,5 +1,5 @@
 ####################################
-# Title: Data Exploration
+# Title: Raw Data Exploration
 # Author: Dantz Farrow
 # Last Modified: 05/27/2026
 ####################################
@@ -16,6 +16,7 @@ glimpse(nces_raw)
 glimpse(seda_raw)
 # Notes: 
 # - Dim: 4650 x 20
+# - Retain: sedadmin, sedaadminname, year, cs_mn_avg_ol, .._se, .._se_adj
 # - Join key: sedaadmin + year (join key)
 
-# table(seda_raw$subcat, seda_raw$subgroup)
+# table(seda_raw$subcat, seda_raw$subgroup) # verify 

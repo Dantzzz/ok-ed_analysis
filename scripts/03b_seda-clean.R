@@ -1,13 +1,13 @@
 ####################################
 # Title: Clean Data (SEDA)
 # Author: Dantz Farrow
-# Last Modified: 05/27/2026
+# Last Modified: 05/28/2026
 ####################################
 
 # --- Pre-processing ---
 seda_transform <- seda_raw %>% 
   select(
-    district_id = sedaadmin,
+    fips_full = sedaadmin,
     district_name = sedaadminname,
     year,
     cs_score = cs_mn_avg_ol,
@@ -16,6 +16,6 @@ seda_transform <- seda_raw %>%
   )
 
 # --- Export Dataset/Clean Up Env ---
-write_csv(seda_transform, file.path(TRANSFORMED, "seda_transform.csv"))
-saveRDS(seda_transform, file.path(TRANSFORMED, "seda_transform.rds"))
+write_csv(seda_transform, file.path(TRANSFORM, "seda_transform.csv"))
+saveRDS(seda_transform, file.path(TRANSFORM, "seda_transform.rds"))
 rm(seda_raw, seda_transform)

@@ -10,7 +10,8 @@ library(stringr); library(tidyr)
 
 # --- File Paths (Global) ---
 RAW <- here("data", "raw")
-TRANSFORMED <- here("data", "transformed")
+TRANSFORM <- here("data", "transformed")
+OUT <- here("output")
 
 # --- Load Raw Data ---
 seda_raw <- read_csv(file.path(RAW, "seda_admindist_annual_cs_2025.1.csv")) %>%
