@@ -24,7 +24,7 @@ merge_inner <- nces %>%
   # join on composite key
   inner_join(seda, by = c("fips_full", "year")) %>% 
   # Column select/rename
-  select(fips = fips_full, district = district_name.x, year, enrollment, cs_score)
+  select(fips = fips_full, district = district_name.x, year, enrollment, cs_score, locale)
 
 # dtype validation
 glimpse(merge_inner) # NOTE: tech & ilc drop w/ join; charter remain
@@ -32,7 +32,9 @@ glimpse(merge_inner) # NOTE: tech & ilc drop w/ join; charter remain
 # --- Post-merge Clean ---
 merge_final <- merge_inner %>% 
   # drop charters / out of scope
-  filter(!str_detect(district, regex("charter|College Bound|Inde", ignore_case = T)))
+  filter(!str_detect(district, regex("charter|College B|Inde", ignore_case = T)))
 
-# --- Export Data ---
+# --- Export Data/Clean Up Env---
 write_rds(merge_final, file.path(TRANSFORM, "nces-seda.rds"))
+write_csv(merge_final, file.path(TRANSFORM, "nces-seda.csv"))
+rm(merge_inner, merge_left, merge_final, nces, seda)

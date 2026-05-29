@@ -15,7 +15,7 @@ seda_transform <- seda_raw %>%
     cs_score_se_adj = cs_mn_avg_ol_se_adj
   )
 
-# --- Export Dataset/Clean Up Env ---
+# --- Export Data/Clean Up Env ---
 write_csv(seda_transform, file.path(TRANSFORM, "seda_transform.csv"))
 saveRDS(seda_transform, file.path(TRANSFORM, "seda_transform.rds"))
 rm(seda_raw, seda_transform)
