@@ -51,6 +51,6 @@ nces_transform <- nces_long %>%
   mutate(year = as.numeric(year))
 
 # --- Export Dataset/Clean Up Env ---
-write_csv(nces_transform, file.path(TRANSFORM, "nces_transform.csv"))
-saveRDS(nces_transform, file.path(TRANSFORM, "nces_transform.rds"))
+write_csv(nces_transform, file.path(path[2], "nces_transform.csv"))
+saveRDS(nces_transform, file.path(path[2], "nces_transform.rds"))
 rm(locale_long, nces_long, nces_proc, nces_raw, nces_transform)

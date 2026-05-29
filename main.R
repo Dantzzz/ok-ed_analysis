@@ -11,7 +11,7 @@ source("scripts/01_setup.R")   ### Load packages & global paths
 # --- 2. Examine Raw Data
 source("scripts/02_pre-exam.R") ### Populate Raw Datasets from /data/raw/
 
-if(!file.exists(file.path(TRANSFORM, "nces-seda.rds"))) {
+if(!file.exists(file.path(path[2], "nces-seda.rds"))) {
 # --- 3. Clean Data (NCES & SEDA)
   source("scripts/03a_nces-clean.R") ### Output: data/transformed/nces.rds
   source("scripts/03b_seda-clean.R") ### Output: data/transformed/seda.rds

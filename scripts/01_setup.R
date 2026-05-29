@@ -6,9 +6,14 @@
 
 # --- Packages ---
 library(dplyr); library(here); library(ggplot2); library(readr)
-library(stringr); library(tidyr)
+library(stringr); library(tidyr); library(glue)
 
 # --- File Paths (Global) ---
-RAW <- here("data", "raw")
-TRANSFORM <- here("data", "transformed")
-OUT <- here("output")
+path <- list(
+  RAW       = here("data", "raw"),
+  TRANSFORM = here("data", "transformed"),
+  OUT       = here("output")
+)
+#RAW <- here("data", "raw")
+#TRANSFORM <- here("data", "transformed")
+#OUT <- here("output")

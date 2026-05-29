@@ -5,8 +5,8 @@
 ####################################
 
 # --- Load Transformed Data ---
-nces <- read_rds(file.path(TRANSFORM, "nces_transform.rds"))
-seda <- read_rds(file.path(TRANSFORM, "seda_transform.rds"))
+nces <- read_rds(file.path(path[2], "nces_transform.rds"))
+seda <- read_rds(file.path(path[2], "seda_transform.rds"))
 
 
 # --- Merge Datasets ---
@@ -26,15 +26,27 @@ merge_inner <- nces %>%
   # Column select/rename
   select(fips = fips_full, district = district_name.x, year, enrollment, cs_score, locale)
 
-# dtype validation
+# validation
 glimpse(merge_inner) # NOTE: tech & ilc drop w/ join; charter remain
+colSums(is.na(merge_inner)) # enrollment & locale: 6 NA
+merge_inner[is.na(merge_inner$enrollment), ] # 4000798 & 4000797
 
 # --- Post-merge Clean ---
 merge_final <- merge_inner %>% 
   # drop charters / out of scope
-  filter(!str_detect(district, regex("charter|College B|Inde", ignore_case = T)))
+  filter(!str_detect(district, regex("charter|College B|Inde", ignore_case = T))) %>% 
+  # drop rows w/out enrollment
+  filter(!is.na(enrollment)) %>% 
+  mutate(
+    is_rural = if_else(str_starts(locale, "4"), 1, 0)
+  )
+
+# --- Verify ---
+head(merge_final, 15)
+tail(merge_final)
+colSums(is.na(merge_final))
 
 # --- Export Data/Clean Up Env---
-write_rds(merge_final, file.path(TRANSFORM, "nces-seda.rds"))
-write_csv(merge_final, file.path(TRANSFORM, "nces-seda.csv"))
+write_rds(merge_final, file.path(path[2], "nces-seda.rds"))
+write_csv(merge_final, file.path(path[2], "nces-seda.csv"))
 rm(merge_inner, merge_left, merge_final, nces, seda)

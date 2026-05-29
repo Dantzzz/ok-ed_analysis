@@ -5,9 +5,17 @@
 ####################################
 
 # --- Load Data ---
- nces_seda <- read_rds(file.path(TRANSFORM, "nces-seda.rds"))
+df <- read_rds(file.path(path[2], "nces-seda.rds"))
 
-# List school names
-nces_seda %>% 
-  distinct(district) %>% 
-  pull(district)
+# --- Inspect ---
+summary(df)           # summary stats
+
+hist(df$enrollment)   # heavily right-skewed 
+
+hist(df$cs_score)     # normal distribution
+
+hist(df$year)       
+df %>% distinct(year) # missing 2020, 2021 (Covid-19)
+
+df %>% count(locale)  # skewed rural
+df %>% count(is_rural) 
