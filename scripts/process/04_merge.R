@@ -1,7 +1,7 @@
 ####################################
 # Title: Merge Transformed Data
 # Author: Dantz Farrow
-# Last Modified: 05/28/2026
+# Last Modified: 05/30/2026
 ####################################
 
 # --- Load Transformed Data ---
@@ -38,8 +38,8 @@ merge_final <- merge_inner %>%
   # drop rows w/out enrollment
   filter(!is.na(enrollment)) %>% 
   mutate(
-    is_rural = if_else(str_starts(locale, "4"), 1, 0), # rural encoding
-    enrollment_log = log10(enrollment) # log transform enrollment
+    is_rural = factor(if_else(str_starts(locale, "4"), 1, 0)), # rural encoding
+    enrollment_log10 = log10(enrollment) # log transform enrollment
   )
 
 # --- Verify ---

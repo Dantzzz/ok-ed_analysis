@@ -1,26 +1,30 @@
 ####################################
 # Title: Main File for Pipeline
 # Author: Dantz Farrow
-# Last Modified: 05/26/2026
+# Last Modified: 05/30/2026
 # Notes: For troubleshooting, follow code-block annotations.
 ####################################
 
-# --- 1. Load Packages, Paths, and Raw Data
+# --- 1. Load Packages, Paths, Helper Functions
 source("scripts/01_setup.R")   ### Load packages & global paths
 
-# --- 2. Examine Raw Data
+# --- 2. Load & Examine Raw Data
 source("scripts/02_pre-exam.R") ### Populate Raw Datasets from /data/raw/
 
 if(!file.exists(file.path(path[2], "nces-seda.rds"))) {
 # --- 3. Clean Data (NCES & SEDA)
-  source("scripts/03a_nces-clean.R") ### Output: data/transformed/nces.rds
-  source("scripts/03b_seda-clean.R") ### Output: data/transformed/seda.rds
+  source("scripts/process/03a_nces-clean.R") ### Output: data/transformed/nces.rds
+  source("scripts/process/03b_seda-clean.R") ### Output: data/transformed/seda.rds
   
 # --- 4. Merge Data
-  source("scripts/04_merge.R") ### Output: data/transformed/nces-seda.rds
+  source("scripts/process/04_merge.R") ### Output: data/transformed/nces-seda.rds
 } else {
   message("Merged data found. Bypass wrangling stage...")
 }
 
 # --- 5. Exploratory Data Analysis
-source("scripts/05_eda-uni.R")
+source("scripts/analysis/05_eda-uni.R") ### Output: output/
+source("scripts/analysis/05_eda-uni.R") ### Output: output/
+
+# --- 6. Cross-sectional Analysis
+source("scripts/analysis/06_analyze.R") ### Output: reports/

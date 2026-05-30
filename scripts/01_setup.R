@@ -12,5 +12,9 @@ library(stringr); library(tidyr); library(glue)
 path <- list(
   RAW       = here("data", "raw"),
   TRANSFORM = here("data", "transformed"),
-  OUT       = here("output")
+  OUT       = here("output"),
+  REPORT    = here("reports")
 )
+
+# --- Helper Functions ---
+source("helper_functions.R")
