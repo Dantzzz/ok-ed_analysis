@@ -23,4 +23,4 @@ if(!file.exists(file.path(path[2], "nces-seda.rds"))) {
 }
 
 # --- 5. Exploratory Data Analysis
-source("scripts/05_eda.R")
+source("scripts/05_eda-uni.R")

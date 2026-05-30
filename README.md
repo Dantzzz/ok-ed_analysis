@@ -11,7 +11,7 @@ The project follows [Google's six-step process for Data Analytics](https://grow.
 6. Act
 
 ## *Research Question:*
-> "Is there a statistically significant relationship between enrollment size and academic performance in Oklahoma public schools?"
+> "Is there a statistically significant relationship between district enrollment and academic performance in Oklahoma public schools?"
 > "How is the trend, if any, felt across different geographic groups?"
 
 

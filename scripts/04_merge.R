@@ -31,14 +31,15 @@ glimpse(merge_inner) # NOTE: tech & ilc drop w/ join; charter remain
 colSums(is.na(merge_inner)) # enrollment & locale: 6 NA
 merge_inner[is.na(merge_inner$enrollment), ] # 4000798 & 4000797
 
-# --- Post-merge Clean ---
+# --- Post-merge Clean // transform rural & enrollment ---
 merge_final <- merge_inner %>% 
   # drop charters / out of scope
   filter(!str_detect(district, regex("charter|College B|Inde", ignore_case = T))) %>% 
   # drop rows w/out enrollment
   filter(!is.na(enrollment)) %>% 
   mutate(
-    is_rural = if_else(str_starts(locale, "4"), 1, 0)
+    is_rural = if_else(str_starts(locale, "4"), 1, 0), # rural encoding
+    enrollment_log = log10(enrollment) # log transform enrollment
   )
 
 # --- Verify ---
