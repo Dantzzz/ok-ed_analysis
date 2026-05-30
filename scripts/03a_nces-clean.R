@@ -7,7 +7,7 @@
 # --- Pre-processing ---
 nces_proc <- nces_raw %>%
   # drop unnecessary columns
-  select(1, 26, 15:25, 4:14) %>%
+  select(1, 3, 5:28) %>%
   # modify column names
   # rename_with(., .fn, .cols) 
   rename_with(~paste0("locale_20", str_sub(.x, -2, -1)), starts_with("Locale")) %>% 
