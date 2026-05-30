@@ -1,7 +1,7 @@
 ####################################
 # Title: 01. Set Up - Packages, Paths, & Raw Data
 # Author: Dantz Farrow
-# Last Modified: 05/27/2026
+# Last Modified: 05/30/2026
 ####################################
 
 # --- Packages ---
@@ -14,6 +14,3 @@ path <- list(
   TRANSFORM = here("data", "transformed"),
   OUT       = here("output")
 )
-#RAW <- here("data", "raw")
-#TRANSFORM <- here("data", "transformed")
-#OUT <- here("output")
