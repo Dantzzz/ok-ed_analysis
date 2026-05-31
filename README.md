@@ -27,7 +27,15 @@ The project follows [Google's six-step process for Data Analytics](https://grow.
 5. Download NCES & SEDA data sets and place in `/Ok-Ed_Analysis/data/`
 
 ## **Technical Stack**
-For data wrangling and analysis, the project relies on R
+For data wrangling and analysis, the project relies on R. Packages include...
+- dplyr
+- here
+- ggplot2
+- readr
+- stringr
+- tidyr
+- glue
+
 
 ## **Project Structure**
 
