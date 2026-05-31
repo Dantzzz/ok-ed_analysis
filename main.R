@@ -2,7 +2,7 @@
 # Title: Main File for Pipeline
 # Author: Dantz Farrow
 # Last Modified: 05/30/2026
-# Notes: For troubleshooting, follow code-block annotations.
+# Notes: For troubleshooting, follow code-block annotations & trace output
 ####################################
 
 # --- 1. Load Packages, Paths, Helper Functions
@@ -23,8 +23,8 @@ if(!file.exists(file.path(path[2], "nces-seda.rds"))) {
 }
 
 # --- 5. Exploratory Data Analysis
-source("scripts/analysis/05_eda-uni.R") ### Output: output/
-source("scripts/analysis/05_eda-uni.R") ### Output: output/
+source("scripts/analysis/05a_eda-uni.R") ### Output: output/
+source("scripts/analysis/05b_eda-multi.R") ### Output: output/
 
 # --- 6. Cross-sectional Analysis
 source("scripts/analysis/06_analyze.R") ### Output: reports/

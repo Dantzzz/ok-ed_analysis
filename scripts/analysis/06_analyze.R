@@ -5,6 +5,8 @@
 ####################################
 
 # --- 1. Preparation ---
+df <- read_rds(file.path(path[2], "nces-seda.rds"))
+
 # collapse to district level
 df_cs <- df %>% 
   group_by(district) %>% 
